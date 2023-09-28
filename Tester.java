@@ -6,6 +6,6 @@ public class Tester
         int numCols = 10;
         Board gameUI = new Board(numCols, numRows);
 
-        gameUI.print();
+        gameUI.printBoard();
     }
 }

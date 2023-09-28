@@ -1,34 +1,37 @@
 public class Board
 {
-    int rowNum;
-    int colNum;
+    int numRows =10;
+    int numCols =10;
+
+    //int[][] gameBoard = new int[numRows][numCols];
     int[][] gameBoard;
+ 
     public Board (int c, int r)
     {
-        rowNum = r;
-        colNum = c;
+        numRows = r;
+        numCols = c;
 
-        int[][] gameBoard = new int[rowNum][colNum];
+        int[][] gameBoard = new int[r][c];
 
-        for (int a = 0; a < rowNum; a++)
+        for (int a = 0; a < numRows; a++)
         {
-            for(int b = 0; b < colNum; b++)
-                gameBoard[a][b] = 0;
+            for(int b = 0; b < numCols; b++)
+                gameBoard[a][b] = 2;
         }
     }
 
-    public void print()
-    {   
-        int rPos = 0;
-        int cPos = 0;
 
-        for (int a = 0; a < rowNum * 2; a++)
+
+    public void printBoard()
+    {   
+
+        for (int a = 0; a <= numRows-1; a++)
         {
-                for (int b = 0; b < colNum * 2; b++)
+                for (int b = 0; b <= numCols-1; b++)
                 {
-                        System.out.print(gameBoard[rPos][cPos]);
+                        System.out.print(gameBoard[a][b]);
                 }
-            System.out.println();
+            System.out.print("\n");  //new line char
         }
     }
 }
