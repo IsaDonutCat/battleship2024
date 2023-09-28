@@ -2,18 +2,18 @@ public class Board
 {
     int rowNum;
     int colNum;
-    char[][] board;
+    int[][] gameBoard;
     public Board (int c, int r)
     {
         rowNum = r;
         colNum = c;
 
-        char[][] board = new char [rowNum][colNum];
+        int[][] gameBoard = new int[rowNum][colNum];
 
         for (int a = 0; a < rowNum; a++)
         {
             for(int b = 0; b < colNum; b++)
-                board[a][b] = 'O';
+                gameBoard[a][b] = 0;
         }
     }
 
@@ -24,29 +24,10 @@ public class Board
 
         for (int a = 0; a < rowNum * 2; a++)
         {
-            if (a % 2 == 0)
-            {
                 for (int b = 0; b < colNum * 2; b++)
                 {
-                    if (b % 2 == 0)
-                    {
-                        System.out.print(board[rPos][cPos]);
-                        cPos++;
-                    }
-                    else
-                    {
-                        System.out.print("|");
-                    }
+                        System.out.print(gameBoard[rPos][cPos]);
                 }
-
-                rPos++;
-            }
-            else
-            {
-                for (int i = 0; i < colNum * 2; i++)
-                    System.out.print("_");
-            }
-
             System.out.println();
         }
     }
