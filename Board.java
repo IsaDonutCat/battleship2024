@@ -35,27 +35,51 @@ public class Board
         }
     }
 
-    public void placeShip()
+    public void placeShip(String shipName, int shipSize)
     {   
         Scanner shipInput = new Scanner(System.in);
 
         
         String ans = "";
-        int r,c,orient;
+        int r,c,orient,loop;
 
         while (ans != "Y")
         {
             System.out.println("XXX\n XXX");
-            System.out.println("Place your armored carrier Uppercase Letter/Number/Degrees will be the top left corner:");
+            System.out.println("Place your " +  shipName + ". Uppercase Letter/Number/Degrees will be the left corner:");
 
             ans = shipInput.nextLine(); 
             r = (int) ans.charAt(0) - 65; // ascii value of A
             c = (int) str.substring(ans.indexOf("/") + 1, ans.lastIndexOf("/")) - 1; // the plus one is we don't want, the minus accounts for diff between human and computer counting
             orient = (int) Integer.valueOf(ans.substring(ans.lastIndexOf("/")+1,ans.length())); //setting values;
+            loop = 0;
 
             if (orient % 90 != 0 )
                 System.out.println("Impossible orientation. Orientation must be in right angles");
-            else if (r >= numRows || c >= numCols)
-        }
-    }
-}
+            else
+            {
+                if ((orient / 90) % 2 == 0)
+                {
+                    if (c + 2 > numCols || r + 4 > numRows)
+                        System.out.print("Ship is off the board. The number of rows is " + numRows + " and the number of columns is " + numCols);
+                    else
+                    {
+                        while (loop < shipSize)
+                        {
+                            if (gameBoard[r+loop][c] == 0)
+                                gameBoard[r + loop][c] = 1;
+                            else
+                            {
+                                System.out.print("A ship is already there.");
+                                break;
+                            }
+                            loop++;
+                        }
+                    }
+                }
+            }
+
+        }//end of while loop
+    }//end of printShip method
+
+}// end o class file
