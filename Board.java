@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Board
 {
     int numRows =10;
@@ -50,8 +52,8 @@ public class Board
 
             ans = shipInput.nextLine(); 
             r = (int) ans.charAt(0) - 65; // ascii value of A
-            c = (int) str.substring(ans.indexOf("/") + 1, ans.lastIndexOf("/")) - 1; // the plus one is we don't want, the minus accounts for diff between human and computer counting
-            orient = (int) Integer.valueOf(ans.substring(ans.lastIndexOf("/")+1,ans.length())); //setting values;
+            c = Integer.valueOf(ans.substring(ans.indexOf("/") + 1, ans.lastIndexOf("/") )) - 1; // the plus one is we don't want, the minus accounts for diff between human and computer counting
+            orient = Integer.valueOf(ans.substring(ans.lastIndexOf("/")+1,ans.length())); //setting values;
             loop = 0;
 
             if (orient % 90 != 0 )
@@ -101,6 +103,8 @@ public class Board
             }
 
         }//end of while loop
+        printBoard();
+        shipInput.close();
     }//end of printShip method
 
 }// end o class file
