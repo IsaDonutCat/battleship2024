@@ -60,7 +60,7 @@ public class Board
             {
                 if ((orient / 90) % 2 == 0)
                 {
-                    if (c + 2 > numCols || r + 4 > numRows)
+                    if (c > numCols || r + shipSize > numRows)
                         System.out.print("Ship is off the board. The number of rows is " + numRows + " and the number of columns is " + numCols);
                     else
                     {
@@ -75,6 +75,27 @@ public class Board
                             }
                             loop++;
                         }
+                        loop = 0;
+                    }
+                }
+                else
+                {
+                    if (c + shipSize > numCols || r > numRows)
+                        System.out.print("Ship is off the board. The number of rows is " + numRows + " and the number of columns is " + numCols);
+                    else
+                    {
+                        while (loop < shipSize)
+                        {
+                            if (gameBoard[r][c + loop] == 0)
+                                gameBoard[r][c + loop] = 1;
+                            else
+                            {
+                                System.out.print("A ship is already there.");
+                                break;
+                            }
+                            loop++;
+                        }
+                        loop = 0;
                     }
                 }
             }
