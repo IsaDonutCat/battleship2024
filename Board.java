@@ -16,7 +16,7 @@ public class Board
         for (int i = 0; i < numRow; i++)
         {
             for (int j = 0; j < numCol; j++)
-                grid[i][j] = ' '; //nulls stuff out
+                grid[i][j] = 'o'; //nulls stuff out
         }
 
         printBoard();
@@ -66,11 +66,12 @@ public class Board
             {
                 System.out.print("Place your " + shipName + ". (" + shipSize + " units). First, type the orientation of your ship (horizontal/vertical):"); 
                 ans = placer.nextLine();
-                
-                
-
-                System.out.print("Finished placing? (Y/N)");
-                ans = placer.nextLine();
+                if (ans.toLowerCase() == "horizontal" || ans.toLowerCase() == "vertical")
+                {
+                    System.out.print("Finished placing? (Y/N)");
+                    ans = placer.nextLine();
+                }
+                 
             }
        }
         }
