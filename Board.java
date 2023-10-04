@@ -104,9 +104,30 @@ public class Board
                     startC = Integer.valueOf(locs.substring(1)) - 1;
                 }
             
-            printBoard(); //to let player see what their placement looks like
+            for (int i = startC; i < startC + finC; i++)
+            {
+                for (int j = startR; j < startR + finR; j++)
+                {
+                    grid[j][i] = '*';
+                }
+            } //to let player see what their placement looks like
+            printBoard();
+
+            
             System.out.print("Satisfied with the placement of your " +boat.getName() + "? (Y/N)");
             ans = boardInput.nextLine(); //updates
+
+            if (!ans.toUpperCase().equals("Y"));
+            {
+                for (int i = startC; i < startC + finC; i++)
+                {
+                    for (int j = startR; j < startR + finR; j++)
+                    {
+                        grid[j][i] = 'o';
+                    }
+                }
+            }//clears the board if they don't like it
+
         }//close of while loop returning
 
         for (int i = startC; i < startC + finC; i++)
