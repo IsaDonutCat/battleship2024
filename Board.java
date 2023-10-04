@@ -27,7 +27,7 @@ public class Board
 
     public void printBoard() // prints board. should run everytime the board is changed so user knows what's going on
     {
-        char letter = 65;
+        char letter = 65; //ASCII value for 'A'
         int numerical = 1;
 
         for (int i = 0; i < numRow; i++)
@@ -52,7 +52,7 @@ public class Board
 
            System.out.println(); 
            System.out.print(" ");
-           for (int k = 0; k < numCol * 2; k++)
+           for (int k = 0; k < numCol * 2; k++) //accounts for the | lines marking
             System.out.print("-");
 
            System.out.println();
@@ -61,11 +61,12 @@ public class Board
         return;
     }//closes printboard
 
-  public boolean (Ship boat, )
+ /* public boolean (Ship boat)
   {
     Scanner boardInput = new Scanner(System.in);
 
-    
-  }
+    boardInput.close();
+    return false;
+  }*/
 
 }//closes class

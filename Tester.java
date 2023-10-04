@@ -33,8 +33,6 @@ public class Tester
         }
 
         Board gameBoard = new Board(numRow, numCol, random);
-
-        gameBoard.printBoard();
         testerInput.close();
     }
 }
