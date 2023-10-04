@@ -17,7 +17,7 @@ public class Ship
         rowUno = firrow;
         rowFin = finrow;
         gameCard = board;
-        
+
         for (int i = fircol; i < fincol; i++)
         {
             for (int j = firrow; j < finrow; j++)
@@ -36,5 +36,15 @@ public class Ship
         }
 
         return true;
+    }
+
+    public int getSize()
+    {
+        return size;
+    }
+
+    public String getName()
+    {
+        return name;
     }
 }

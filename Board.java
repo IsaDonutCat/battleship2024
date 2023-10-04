@@ -61,12 +61,30 @@ public class Board
         return;
     }//closes printboard
 
- /* public boolean (Ship boat)
-  {
-    Scanner boardInput = new Scanner(System.in);
+    public boolean placePiece(Ship boat)
+    {
+        Scanner boardInput = new Scanner(System.in);
+        String ans = "";
+        String orient = "";
+        
+        while (!ans.toUpperCase().equals("Y"))
+        {
+            System.out.println("Place your " + boat.getName() + ". It is " + boat.getSize() + ".");
+            System.out.print("First, decide on the orientation (vertical/horizontal):");
+            orient = boardInput.nextLine(); 
 
-    boardInput.close();
-    return false;
-  }*/
+            while (!orient.toLowerCase().equals("vertical") && !orient.toLowerCase().equals("horizontal"))
+            {
+                System.out.print("First, decide on the orientation (vertical/horizontal):");
+                orient = boardInput.nextLine();
+            }
+
+
+        }
+
+
+        boardInput.close();
+        return false;
+    }
 
 }//closes class
