@@ -34,5 +34,6 @@ public class Tester
 
         Board gameBoard = new Board(numRow, numCol, random);
         testerInput.close();
+
     }
 }

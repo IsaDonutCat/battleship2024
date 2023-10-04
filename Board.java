@@ -66,25 +66,59 @@ public class Board
         Scanner boardInput = new Scanner(System.in);
         String ans = "";
         String orient = "";
-        
+        String locs = "";
+        int startR = 0;
+        int startC = 0;
+        int finR = 0;
+        int finC = 0;
+
         while (!ans.toUpperCase().equals("Y"))
         {
-            System.out.println("Place your " + boat.getName() + ". It is " + boat.getSize() + ".");
-            System.out.print("First, decide on the orientation (vertical/horizontal):");
+            System.out.println("Place your " + boat.getName() + ". It is " + boat.getSize() + "."); //prints introduction
+            System.out.print("First, decide on the orientation (vertical/horizontal):"); // the "do" of the orientation getting
             orient = boardInput.nextLine(); 
 
-            while (!orient.toLowerCase().equals("vertical") && !orient.toLowerCase().equals("horizontal"))
+            while (!orient.toLowerCase().equals("vertical") && !orient.toLowerCase().equals("horizontal")) //the while if it is not valid
             {
+                System.out.println("The orientation is invalid. Please make sure to type in lowercase.");
                 System.out.print("First, decide on the orientation (vertical/horizontal):");
                 orient = boardInput.nextLine();
             }
+            if (orient.toLowerCase().equals("vertical"))
+                finC = boat.getSize(); //using getter to not touch the variable
+            else 
+                finR = boat.getSize(); //added on 
 
 
-        }
+            System.out.print("Please enter in the coordinates of the top left corner of the ship (A1, B1, etc.):"); //finCol and finRow mus be gretaer than that.
+            locs = boardInput.nextLine();
+            startR = (int) locs.toUpperCase().charAt(0) - 65; //cast to int for ease
+            startC = Integer.valueOf(locs.substring(1)) - 1; //cast to integer. the -1 is to acount for the diff between computer counting and human counting
+            //this part is the "do" of the positioning "do-while" loop
 
+                while (!boat.placeShip(grid, numRow, numCol, startC, startC + finC, startR, startR + finR))
+                { 
+                    System.out.print("Please enter in the coordinates of the top left corner of the ship (A1, B1, etc.):");
+                    locs = boardInput.nextLine();
+                    startR = (int) locs.toUpperCase().charAt(0) - 65; //ASCII VALUE FOR 'A'
+                    startC = Integer.valueOf(locs.substring(1)) - 1;
+                }
+            
+            printBoard(); //to let player see what their placement looks like
+            System.out.print("Satisfied with the placement of your " +boat.getName() + "? (Y/N)");
+            ans = boardInput.nextLine(); //updates
+        }//close of while loop returning
+
+        for (int i = startC; i < startC + finC; i++)
+        {
+            for (int j = startR; j < startR + finR; j++)
+            {
+                grid[j][i] = '*';
+            }
+        } //actually updates the board
 
         boardInput.close();
-        return false;
+        return true;
     }
 
 }//closes class
