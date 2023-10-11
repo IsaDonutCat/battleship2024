@@ -118,7 +118,7 @@ public class Board
                     else 
                     {
                         finR = startR; //added on 
-                        finC = startC + shipSize;
+                        finC = startC + shipSize; //this is why i got mixed up. if it's vetical, the number of rows is changing, but horizontal means number of columns is changing
                     }
                 }
 
