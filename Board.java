@@ -110,6 +110,7 @@ public class Board
                     System.out.print("Please enter in the coordinates of the top left corner of the ship (A1, B1, etc.):");
                     locs = inputSource.nextLine();
                     startR = (int) locs.toUpperCase().charAt(0) - 65; //ASCII VALUE FOR 'A'
+                    while (!locs.substring(1).isNumeric())
                     startC = Integer.valueOf(locs.substring(1)) - 1; //fixes to machine counting
 
                     if (orient.toLowerCase().equals("vertical"))
@@ -127,7 +128,6 @@ public class Board
 
             for (int i = startC; i < finC; i++) // APPARENTLY IT CHECKS THE INITIALIZATION ??? SO I HAVE TO ADD A = SO IT RUNS AT LEAST ONCE
             {
-                System.out.println(i);
                 for (int j = startR; j < finR; j++)
                 {
                     grid[j][i] = '*';
