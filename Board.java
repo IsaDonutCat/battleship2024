@@ -63,9 +63,8 @@ public class Board
         return;
     }//closes printboard
 
-    public void placePiece(Ship boat)
+    public void placePiece(Ship boat, Scanner inputSource)
     {
-        Scanner boardInput = new Scanner(System.in);
         String ans = "";
         String orient = "";
         String locs = "";
@@ -79,17 +78,17 @@ public class Board
         {
             System.out.println("Place your " + boat.getName() + ". It is " + boat.getSize() + "."); //prints introduction
             System.out.print("First, decide on the orientation (vertical/horizontal):"); // the "do" of the orientation getting
-            orient = boardInput.nextLine(); 
+            orient = inputSource.nextLine(); 
 
             while (!orient.toLowerCase().equals("vertical") && !orient.toLowerCase().equals("horizontal")) //the while if it is not valid
             {
                 System.out.println("The orientation is invalid. Please make sure to type in lowercase.");
                 System.out.print("First, decide on the orientation (vertical/horizontal):");
-                orient = boardInput.nextLine();
+                orient = inputSource.nextLine();
             }
 
             System.out.print("Please enter in the coordinates of the top left corner of the ship (A1, B1, etc.):"); //finCol and finRow mus be gretaer than that.
-            locs = boardInput.nextLine();
+            locs = inputSource.nextLine();
             startR = (int) locs.toUpperCase().charAt(0) - 65; //cast to int for ease
             startC = Integer.valueOf(locs.substring(1)) - 1; //cast to integer. the -1 is to acount for the diff between computer counting and human counting
             
@@ -110,7 +109,7 @@ public class Board
                 while (!boat.placeShip(grid, numRow, numCol, startC, finC, startR, finR))
                 { 
                     System.out.print("Please enter in the coordinates of the top left corner of the ship (A1, B1, etc.):");
-                    locs = boardInput.nextLine();
+                    locs = inputSource.nextLine();
                     startR = (int) locs.toUpperCase().charAt(0) - 65; //ASCII VALUE FOR 'A'
                     startC = Integer.valueOf(locs.substring(1)) - 1; //fixes to machine counting
 
@@ -139,8 +138,8 @@ public class Board
             printBoard();
 
             
-            System.out.print("Satisfied with the placement of your " +boat.getName() + "? (Y/N)");
-            ans = boardInput.nextLine(); //updates
+            System.out.print("Satisfied with the placement of your " + boat.getName() + "? (Y/N)");
+            ans = inputSource.nextLine(); //updates
 
             if (!ans.toUpperCase().equals("Y"));
             {
@@ -162,8 +161,6 @@ public class Board
                 grid[y][x] = '*';
             }
         } //actually updates the board
-
-        boardInput.close();
         return;
     }
 
