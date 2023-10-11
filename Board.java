@@ -16,7 +16,7 @@ public class Board
         for (int i = 0; i < numRow; i++)
         {
             for (int j = 0; j < numCol; j++)
-                grid[i][j] = 'o'; //nulls stuff out
+                grid[i][j] = 'O'; //nulls stuff out
         }
 
         printBoard();
@@ -85,6 +85,18 @@ public class Board
                 orient = boardInput.nextLine();
             }
 
+            
+            if (orient.toLowerCase().equals("vertical"))
+            {
+                finC = startC + boat.getSize(); //using getter to not touch the variable
+                finR = startR;
+            }
+            else 
+            {
+                finR = startR + boat.getSize(); //added on 
+                finC = startC;
+            }
+            
             System.out.print("Please enter in the coordinates of the top left corner of the ship (A1, B1, etc.):"); //finCol and finRow mus be gretaer than that.
             locs = boardInput.nextLine();
             startR = (int) locs.toUpperCase().charAt(0) - 65; //cast to int for ease
@@ -140,16 +152,16 @@ public class Board
                 {
                     for (int j = startR; j < finR; j++)
                     {
-                        grid[j][i] = 'o';
+                        grid[j][i] = 'O';
                     }
                 }
             }//clears the board if they don't like it
 
         }//close of while loop returning
 
-        for (int i = startC; i < startC + finC; i++)
+        for (int i = startC; i < finC; i++)
         {
-            for (int j = startR; j < startR + finR; j++)
+            for (int j = startR; j < finR; j++)
             {
                 grid[j][i] = '*';
             }

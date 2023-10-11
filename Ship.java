@@ -3,6 +3,7 @@ public class Ship
     int colUno, colFin, rowUno, rowFin, size, gridRows, gridCols;
     String name;
     char[][] gameCard;
+
     public Ship (int shipSize, String title) // constructor
     {
         name = title;
@@ -39,19 +40,11 @@ public class Ship
         {
             for (int j = firrow; j < finrow; j++)
             {
-                if (board[j][i] != 'o')
+                if (board[j][i] != 'O')
                 {
                     System.out.println("Another ship is occupying this space!");
                     return false;
                 }
-            }
-        }
-
-        for (int i = fircol; i < fincol; i++)
-        {
-            for (int j = firrow; j < finrow; j++)
-            {
-                board[j][i] = '*';
             }
         }
 
