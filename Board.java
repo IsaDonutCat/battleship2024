@@ -85,18 +85,6 @@ public class Board
                 orient = boardInput.nextLine();
             }
 
-            
-            if (orient.toLowerCase().equals("vertical"))
-            {
-                finC = startC + boat.getSize(); //using getter to not touch the variable
-                finR = startR;
-            }
-            else 
-            {
-                finR = startR + boat.getSize(); //added on 
-                finC = startC;
-            }
-            
             System.out.print("Please enter in the coordinates of the top left corner of the ship (A1, B1, etc.):"); //finCol and finRow mus be gretaer than that.
             locs = boardInput.nextLine();
             startR = (int) locs.toUpperCase().charAt(0) - 65; //cast to int for ease
