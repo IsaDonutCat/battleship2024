@@ -71,6 +71,7 @@ public class Board
         int startC = 0;
         int finR = 0;
         int finC = 0;
+        int shipSize = boat.getSize();
 
         while (!ans.toUpperCase().equals("Y"))
         {
@@ -87,36 +88,36 @@ public class Board
 
             System.out.print("Please enter in the coordinates of the top left corner of the ship (A1, B1, etc.):"); //finCol and finRow mus be gretaer than that.
             locs = boardInput.nextLine();
-            startR = (int) locs.toUpperCase().charAt(0) - 65; //cast to int for ease
-            startC = Integer.valueOf(locs.substring(1)) - 1; //cast to integer. the -1 is to acount for the diff between computer counting and human counting
-            //this part is the "do" of the positioning "do-while" loop
+            startC = (int) locs.toUpperCase().charAt(0) - 65; //cast to int for ease
+            startR = Integer.valueOf(locs.substring(1)) - 1; //cast to integer. the -1 is to acount for the diff between computer counting and human counting
             if (orient.toLowerCase().equals("vertical"))
             {
-                finR = startR + boat.getSize(); //using getter to not touch the variable
+                finR = startR + shipSize; //using getter to not touch the variable
                 finC = startC; 
             }
             else 
             {
                 finR = startR; //added on 
-                finC = startC + boat.getSize();
+                finC = startC + shipSize;
             }
+            //this part is the "do" of the positioning "do-while" loop
 
                 while (!boat.placeShip(grid, numRow, numCol, startC, finC, startR, finR))
                 { 
                     System.out.print("Please enter in the coordinates of the top left corner of the ship (A1, B1, etc.):");
                     locs = boardInput.nextLine();
-                    startR = (int) locs.toUpperCase().charAt(0) - 65; //ASCII VALUE FOR 'A'
-                    startC = Integer.valueOf(locs.substring(1)) - 1;
+                    startC = (int) locs.toUpperCase().charAt(0) - 65; //ASCII VALUE FOR 'A'
+                    startR = Integer.valueOf(locs.substring(1)) - 1;
 
                     if (orient.toLowerCase().equals("vertical"))
                     {
-                        finR = startR + boat.getSize(); //using getter to not touch the variable
+                        finR = startR + shipSize; //using getter to not touch the variable
                         finC = startC; 
                     }
                     else 
                     {
                         finR = startR; //added on 
-                        finC = startC + boat.getSize();
+                        finC = startC + shipSize;
                     }
                 }
 
@@ -127,7 +128,9 @@ public class Board
                 {
                     grid[j][i] = '*';
                 }
+                System.out.println(i);
             } //to let player see what their placement looks like
+            System.out.println("update");
             printBoard();
 
             
