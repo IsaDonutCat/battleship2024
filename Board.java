@@ -16,7 +16,7 @@ public class Board
         for (int i = 0; i < numRow; i++)
         {
             for (int j = 0; j < numCol; j++)
-                grid[i][j] = 'o'; //nulls stuff out
+                grid[i][j] = 'O'; //nulls stuff out
         }
 
         printBoard();
@@ -85,10 +85,15 @@ public class Board
                 orient = boardInput.nextLine();
             }
             if (orient.toLowerCase().equals("vertical"))
-                finC = boat.getSize(); //using getter to not touch the variable
+            {
+                finC = startC + boat.getSize(); //using getter to not touch the variable
+                finR = startR;
+            }
             else 
-                finR = boat.getSize(); //added on 
-
+            {
+                finR = startR + boat.getSize(); //added on 
+                finC = startC;
+            }
 
             System.out.print("Please enter in the coordinates of the top left corner of the ship (A1, B1, etc.):"); //finCol and finRow mus be gretaer than that.
             locs = boardInput.nextLine();
@@ -96,7 +101,7 @@ public class Board
             startC = Integer.valueOf(locs.substring(1)) - 1; //cast to integer. the -1 is to acount for the diff between computer counting and human counting
             //this part is the "do" of the positioning "do-while" loop
 
-                while (!boat.placeShip(grid, numRow, numCol, startC, startC + finC, startR, startR + finR))
+                while (!boat.placeShip(grid, numRow, numCol, finC, startR, startR + finR))
                 { 
                     System.out.print("Please enter in the coordinates of the top left corner of the ship (A1, B1, etc.):");
                     locs = boardInput.nextLine();
@@ -104,12 +109,13 @@ public class Board
                     startC = Integer.valueOf(locs.substring(1)) - 1;
                 }
             
-            for (int i = startC; i < startC + finC; i++)
+            for (int i = startC; i <= finC - startC; i++)
             {
-                for (int j = startR; j < startR + finR; j++)
+                for (int j = startR; j <= finR - startR; j++)
                 {
                     grid[j][i] = '*';
                 }
+                System.out.print(i);
             } //to let player see what their placement looks like
             printBoard();
 
@@ -123,7 +129,7 @@ public class Board
                 {
                     for (int j = startR; j < startR + finR; j++)
                     {
-                        grid[j][i] = 'o';
+                        grid[j][i] = 'O';
                     }
                 }
             }//clears the board if they don't like it
@@ -140,6 +146,11 @@ public class Board
 
         boardInput.close();
         return true;
+    }
+
+    public void printTempBoard ()
+    {
+
     }
 
 }//closes class

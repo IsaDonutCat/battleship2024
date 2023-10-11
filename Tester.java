@@ -25,6 +25,12 @@ public class Tester
             numRow = 10;
             numCol = 10;;
             random = false;
+            System.out.println("Welcome to regular mode!");
+            System.out.println("In this mode, player 1 will place 5 ships: a PT Boat (2 units long), a submarine (3 units long),\n
+                                a destroyer (3 units long), a battleship (4 units long), and a carrier (5 units long).  ");)
+            System.out.println("Then, player 2 will have a given number of guesses. An 'O' will represent an unknown location,\n 
+                                a '.' will represent a miss, a '!' will represent a hit and a 'x' will represent a sunk ship.");
+            System.out.println("If player 2 manages to sink all the ships in the given number of guesses, player 2 will win. Otherwise, player 1 will win.");
         }    
         else
         {
@@ -32,6 +38,11 @@ public class Tester
             numCol = 8;
             shipSet = Arrays.copyOfRange(shipSet,2,5);
             random = true;
+            System.out.println("Welcome to fast mode!");
+            System.out.println("In this mode, the computer will place 3 ships: a submarine (3 units long), a battleship (4 units long), and a carrier (5 units long).  ");)
+            System.out.println("Then, you will have 20 guesses. An 'O' will represent an unknown location,
+                                a '.' will represent a miss, a '!' will represent a hit and a 'x' will represent a sunk ship.");
+            System.out.println("If you manage to sink all the ships in the given number of guesses, you will win. Otherwise, the computer will win."); //random mode to create
         }
 
         Board gameBoard = new Board(numRow, numCol, random); //med tp create a random ship set class
@@ -45,7 +56,7 @@ public class Tester
         }
         
 
-        testerInput.close();
+        testerInput.close(); // at the very end
 
     }
 }
