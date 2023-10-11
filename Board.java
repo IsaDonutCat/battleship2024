@@ -112,13 +112,16 @@ public class Board
 
                     if (orient.toLowerCase().equals("vertical"))
                     {
-                        finR = startR + shipSize; //using getter to not touch the variable
+                        finR = startR + shipSize - 1; //it needs to stop at finR, 
+                        /*
+                         * startR is 0. shipSize is 2. finR, last space of the ship, should be 1. so finR accounts for the human counting shipSize
+                         */
                         finC = startC; 
                     }
                     else 
                     {
                         finR = startR; //added on 
-                        finC = startC + shipSize; //this is why i got mixed up. if it's vetical, the number of rows is changing, but horizontal means number of columns is changing
+                        finC = startC + shipSize - 1; //this is why i got mixed up. if it's vetical, the number of rows is changing, but horizontal means number of columns is changing
                     }
                 }
 
