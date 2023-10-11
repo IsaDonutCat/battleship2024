@@ -4,10 +4,9 @@ public class Board
 {
     int numRow, numCol;
     char grid[][];
-    boolean gameplay; // true == regular, false == speed
-    public Board (int r, int c, boolean style)
+
+    public Board (int r, int c)
     {
-        gameplay = style;
         numRow = r;
         numCol = c; // reduces need to continually pass on variables
 

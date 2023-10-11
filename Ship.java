@@ -22,7 +22,7 @@ public class Ship
 
     public boolean placeShip (char[][] board, int rowNumb, int colNumb, int fircol, int fincol, int firrow, int finrow) //this many just to avoid the need for more variables later.
     {
-        gridRows = (rowNumb);
+        gridRows = rowNumb;
         gridCols = colNumb;
         colUno = fircol;
         colFin = fincol;

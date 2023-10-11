@@ -1,5 +1,6 @@
 //Isabella Wang
 import java.util.Scanner; // input
+import java.util.prefs.BackingStoreException;
 import java.util.Arrays;
 public class Tester 
 {
@@ -43,7 +44,9 @@ public class Tester
             System.out.println("If you manage to sink all the ships in the given number of guesses, you will win. Otherwise, the computer will win."); //random mode to*/
         }
 
-        Board placeBoard = new Board(numRow, numCol, randomized); //med tp create a random ship set class
+        Board placeBoard = new Board(numRow, numCol); //med tp create a random ship set class
+        Board guessboard = new Board(numRow,numCol);
+
 
         int len = shipSet.length;
         if (!randomized)
@@ -53,10 +56,10 @@ public class Tester
                     placeBoard.placePiece(shipSet[i], inputSource); 
                     //i give up lets just pass scanner in. also apparently ur not supposed to have multiple scanners or else they'll eat everything. WHOOPS
             }
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n"); //clear the screen to reduce cheating
 
         }
 
         inputSource.close(); // at the very end
-
     }
 }
