@@ -101,7 +101,7 @@ public class Board
             startC = Integer.valueOf(locs.substring(1)) - 1; //cast to integer. the -1 is to acount for the diff between computer counting and human counting
             //this part is the "do" of the positioning "do-while" loop
 
-                while (!boat.placeShip(grid, numRow, numCol, finC, startR, startR + finR))
+                while (!boat.placeShip(grid, numRow, numCol, finC, startR, finR))
                 { 
                     System.out.print("Please enter in the coordinates of the top left corner of the ship (A1, B1, etc.):");
                     locs = boardInput.nextLine();
@@ -109,13 +109,12 @@ public class Board
                     startC = Integer.valueOf(locs.substring(1)) - 1;
                 }
             
-            for (int i = startC; i <= finC - startC; i++)
+            for (int i = startC; i < finC; i++)
             {
-                for (int j = startR; j <= finR - startR; j++)
+                for (int j = startR; j < finR; j++)
                 {
-                    grid[j][i] = '*';
+                    grid[i][j] = '*';
                 }
-                System.out.print(i);
             } //to let player see what their placement looks like
             printBoard();
 
@@ -146,11 +145,6 @@ public class Board
 
         boardInput.close();
         return true;
-    }
-
-    public void printTempBoard ()
-    {
-
     }
 
 }//closes class

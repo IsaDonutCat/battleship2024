@@ -48,14 +48,6 @@ public class Ship
             }
         }
 
-        for (int i = fircol; i < fincol; i++)
-        {
-            for (int j = firrow; j < finrow; j++)
-            {
-                board[j][i] = '*';
-            }
-        }
-
         return true;
     }
 
