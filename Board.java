@@ -88,8 +88,9 @@ public class Board
 
             System.out.print("Please enter in the coordinates of the top left corner of the ship (A1, B1, etc.):"); //finCol and finRow mus be gretaer than that.
             locs = boardInput.nextLine();
-            startC = (int) locs.toUpperCase().charAt(0) - 65; //cast to int for ease
-            startR = Integer.valueOf(locs.substring(1)) - 1; //cast to integer. the -1 is to acount for the diff between computer counting and human counting
+            startR = (int) locs.toUpperCase().charAt(0) - 65; //cast to int for ease
+            startC = Integer.valueOf(locs.substring(1)) - 1; //cast to integer. the -1 is to acount for the diff between computer counting and human counting
+
             if (orient.toLowerCase().equals("vertical"))
             {
                 finR = startR + shipSize; //using getter to not touch the variable
@@ -106,8 +107,8 @@ public class Board
                 { 
                     System.out.print("Please enter in the coordinates of the top left corner of the ship (A1, B1, etc.):");
                     locs = boardInput.nextLine();
-                    startC = (int) locs.toUpperCase().charAt(0) - 65; //ASCII VALUE FOR 'A'
-                    startR = Integer.valueOf(locs.substring(1)) - 1;
+                    startR = (int) locs.toUpperCase().charAt(0) - 65; //ASCII VALUE FOR 'A'
+                    startC = Integer.valueOf(locs.substring(1)) - 1; //fixes to machine counting
 
                     if (orient.toLowerCase().equals("vertical"))
                     {
@@ -122,10 +123,10 @@ public class Board
                 }
 
 
-            for (int i = startC; i < finC; i++)
+            for (int i = startC; i <= finC; i++) // APPARENTLY IT CHECKS THE INITIALIZATION ??? SO I HAVE TO ADD A = SO IT RUNS AT LEAST ONCE
             {
                 System.out.println(i);
-                for (int j = startR; j < finR; j++)
+                for (int j = startR; j <= finR; j++)
                 {
                     grid[j][i] = '*';
                 }
