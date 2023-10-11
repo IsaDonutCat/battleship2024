@@ -72,7 +72,7 @@ public class Board
         int startC = 0;
         int finR = 0;
         int finC = 0;
-        int shipSize = boat.getSize();
+        int shipSize = boat.getSize(); // save runtime 
 
         while (!ans.toUpperCase().equals("Y"))
         {
@@ -82,7 +82,7 @@ public class Board
 
             while (!orient.toLowerCase().equals("vertical") && !orient.toLowerCase().equals("horizontal")) //the while if it is not valid
             {
-                System.out.println("The orientation is invalid. Please make sure to type in lowercase.");
+                System.out.println("The orientation is invalid.");
                 System.out.print("First, decide on the orientation (vertical/horizontal):");
                 orient = inputSource.nextLine();
             }

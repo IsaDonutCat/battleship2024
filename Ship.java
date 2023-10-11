@@ -30,7 +30,8 @@ public class Ship
         rowFin = finrow;
         gameCard = board;
 
-        if (rowFin > gridRows || colFin > gridCols)
+        if (rowFin > gridRows || colFin > gridCols
+        || firrow < 0 || fircol < 0)
         {
             System.out.println("The ship would be hanging off the board.");
             return false;
