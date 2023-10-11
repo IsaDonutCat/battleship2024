@@ -124,11 +124,12 @@ public class Board
 
             for (int i = startC; i < finC; i++)
             {
+                System.out.println(i);
                 for (int j = startR; j < finR; j++)
                 {
                     grid[j][i] = '*';
                 }
-                System.out.println(i);
+                
             } //to let player see what their placement looks like
             printBoard();
 
@@ -149,11 +150,11 @@ public class Board
 
         }//close of while loop returning
 
-        for (int i = startC; i < finC; i++)
+        for (int x = startC; x < finC; x++)
         {
-            for (int j = startR; j < finR; j++)
+            for (int y = startR; y < finR; y++)
             {
-                grid[j][i] = '*';
+                grid[y][x] = '*';
             }
         } //actually updates the board
 
