@@ -84,29 +84,46 @@ public class Board
                 System.out.print("First, decide on the orientation (vertical/horizontal):");
                 orient = boardInput.nextLine();
             }
-            if (orient.toLowerCase().equals("vertical"))
-                finC = boat.getSize(); //using getter to not touch the variable
-            else 
-                finR = boat.getSize(); //added on 
-
 
             System.out.print("Please enter in the coordinates of the top left corner of the ship (A1, B1, etc.):"); //finCol and finRow mus be gretaer than that.
             locs = boardInput.nextLine();
             startR = (int) locs.toUpperCase().charAt(0) - 65; //cast to int for ease
             startC = Integer.valueOf(locs.substring(1)) - 1; //cast to integer. the -1 is to acount for the diff between computer counting and human counting
             //this part is the "do" of the positioning "do-while" loop
+            if (orient.toLowerCase().equals("vertical"))
+            {
+                finR = startR + boat.getSize(); //using getter to not touch the variable
+                finC = startC; 
+            }
+            else 
+            {
+                finR = startR; //added on 
+                finC = startC + boat.getSize();
+            }
 
-                while (!boat.placeShip(grid, numRow, numCol, startC, startC + finC, startR, startR + finR))
+                while (!boat.placeShip(grid, numRow, numCol, startC, finC, startR, finR))
                 { 
                     System.out.print("Please enter in the coordinates of the top left corner of the ship (A1, B1, etc.):");
                     locs = boardInput.nextLine();
                     startR = (int) locs.toUpperCase().charAt(0) - 65; //ASCII VALUE FOR 'A'
                     startC = Integer.valueOf(locs.substring(1)) - 1;
+
+                    if (orient.toLowerCase().equals("vertical"))
+                    {
+                        finR = startR + boat.getSize(); //using getter to not touch the variable
+                        finC = startC; 
+                    }
+                    else 
+                    {
+                        finR = startR; //added on 
+                        finC = startC + boat.getSize();
+                    }
                 }
-            
-            for (int i = startC; i < startC + finC; i++)
+
+
+            for (int i = startC; i < finC; i++)
             {
-                for (int j = startR; j < startR + finR; j++)
+                for (int j = startR; j < finR; j++)
                 {
                     grid[j][i] = '*';
                 }
@@ -119,9 +136,9 @@ public class Board
 
             if (!ans.toUpperCase().equals("Y"));
             {
-                for (int i = startC; i < startC + finC; i++)
+                for (int i = startC; i < finC; i++)
                 {
-                    for (int j = startR; j < startR + finR; j++)
+                    for (int j = startR; j < finR; j++)
                     {
                         grid[j][i] = 'o';
                     }
