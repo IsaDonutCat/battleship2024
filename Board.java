@@ -30,6 +30,8 @@ public class Board
         char letter = 65; //ASCII value for 'A'
         int numerical = 1;
 
+        System.out.print(" "); //indenting extra. 
+
         for (int i = 0; i < numRow; i++)
         {
             System.out.print(" " + numerical); // numerical for columns
@@ -61,7 +63,7 @@ public class Board
         return;
     }//closes printboard
 
-    public boolean placePiece(Ship boat)
+    public void placePiece(Ship boat)
     {
         Scanner boardInput = new Scanner(System.in);
         String ans = "";
@@ -90,17 +92,19 @@ public class Board
             locs = boardInput.nextLine();
             startR = (int) locs.toUpperCase().charAt(0) - 65; //cast to int for ease
             startC = Integer.valueOf(locs.substring(1)) - 1; //cast to integer. the -1 is to acount for the diff between computer counting and human counting
-
+            
             if (orient.toLowerCase().equals("vertical"))
             {
-                finR = startR + shipSize; //using getter to not touch the variable
-                finC = startC; 
+                finR = startR + shipSize;
+                finC = startC + 1; //the index one greater than where the ship should be, also so it runs at least once
             }
-            else 
+            else
             {
-                finR = startR; //added on 
+                finR = startR + 1;
                 finC = startC + shipSize;
             }
+
+
             //this part is the "do" of the positioning "do-while" loop
 
                 while (!boat.placeShip(grid, numRow, numCol, startC, finC, startR, finR))
@@ -112,24 +116,21 @@ public class Board
 
                     if (orient.toLowerCase().equals("vertical"))
                     {
-                        finR = startR + shipSize - 1; //it needs to stop at finR, 
-                        /*
-                         * startR is 0. shipSize is 2. finR, last space of the ship, should be 1. so finR accounts for the human counting shipSize
-                         */
-                        finC = startC; 
+                        finR = startR + shipSize;
+                        finC = startC + 1; //the index one greater than where the ship should be, also so it runs at least once
                     }
-                    else 
+                    else
                     {
-                        finR = startR; //added on 
-                        finC = startC + shipSize - 1; //this is why i got mixed up. if it's vetical, the number of rows is changing, but horizontal means number of columns is changing
-                    }
+                        finR = startR + 1;
+                        finC = startC + shipSize;
+                    } //updates every loop so it doesn't get trapped
                 }
 
 
-            for (int i = startC; i <= finC; i++) // APPARENTLY IT CHECKS THE INITIALIZATION ??? SO I HAVE TO ADD A = SO IT RUNS AT LEAST ONCE
+            for (int i = startC; i < finC; i++) // APPARENTLY IT CHECKS THE INITIALIZATION ??? SO I HAVE TO ADD A = SO IT RUNS AT LEAST ONCE
             {
                 System.out.println(i);
-                for (int j = startR; j <= finR; j++)
+                for (int j = startR; j < finR; j++)
                 {
                     grid[j][i] = '*';
                 }
@@ -163,7 +164,7 @@ public class Board
         } //actually updates the board
 
         boardInput.close();
-        return true;
+        return;
     }
 
 }//closes class
