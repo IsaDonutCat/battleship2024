@@ -130,7 +130,6 @@ public class Board
                 }
                 System.out.println(i);
             } //to let player see what their placement looks like
-            System.out.println("update");
             printBoard();
 
             
