@@ -68,7 +68,7 @@ public class Tester
             System.out.print("Number of guesses:");
             maxGuesses = inputSource.nextInt();
             System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n"); //clear the screen to reduce cheating
-            Shooty guesser = new Shooty(placeBoard, guessBoard, maxGuesses);
+            Shooty guesser = new Shooty(placeBoard, guessBoard, maxGuesses); //WHY WONT U COOPERATE >:(
 
             System.out.print("Enter a guess:");
             trythis = inputSource.nextLine();
