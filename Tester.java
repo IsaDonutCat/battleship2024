@@ -1,6 +1,5 @@
 //Isabella Wang
 import java.util.Scanner; // input
-import java.util.prefs.BackingStoreException;
 import java.util.Arrays;
 public class Tester 
 {
@@ -14,6 +13,8 @@ public class Tester
         String ans = inputSource.nextLine(); 
         Ship[] shipSet = { new Ship(2,"PT Boat"), new Ship(3,"Submarine"), 
             new Ship(3,"Destroyer"), new Ship(4,"Battleship"), new Ship(5, "Carrier") };
+
+
 
         while (!ans.toLowerCase().equals("fast") && !ans.toLowerCase().equals("regular"))
         {
@@ -53,9 +54,10 @@ public class Tester
 
         Board placeBoard = new Board(numRow, numCol); //med tp create a random ship set class
         Board guessboard = new Board(numRow,numCol);
-
-
+        int maxGuesses = 20;
+        String guess;
         int len = shipSet.length;
+        
         if (!randomized)
         {
             for (int i = 0; i < len; i++)
@@ -63,7 +65,16 @@ public class Tester
                     placeBoard.placePiece(shipSet[i], inputSource); 
                     //i give up lets just pass scanner in. also apparently ur not supposed to have multiple scanners or else they'll eat everything. WHOOPS
             }
+            System.out.print("Number of guesses:");
+            maxGuesses = inputSource.nextInt();
             System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n"); //clear the screen to reduce cheating
+            Shooty guesser = new Shooty(placeBoard, guessBoard, maxGuesses);
+
+            do
+            {
+
+            }
+            while (!guesser.guess(0))
 
         }
 

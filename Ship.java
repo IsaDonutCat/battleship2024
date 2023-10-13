@@ -52,7 +52,43 @@ public class Ship
         return true;
     }
 
-    
+    public int inCoords (String ans) //return -1 if coords don't work, return index where vertical start
+    {
+        char[] arr = ans.toCharArray();
+        int len = arr.length;
+
+        int  index = 0;
+        
+
+        if (!Character.isLetter(arr[0]))
+        {
+            System.out.println("No row coordinate found.");
+            return -1;
+        }
+
+        while (Character.isAlphabetic(arr[index]))
+        {
+            index++;
+            if(index >= len)
+            {
+                System.out.println("No column coordinate found.");
+                return -2;
+            }
+        }
+
+        int cursor = index;
+
+        while (cursor < len) //makes sure parse int won't have error
+        {
+            if (!Character.isDigit(arr[cursor]))
+            {
+                System.out.println("Invalid column coordinate");
+                return -3;
+            }
+            cursor++;
+        }
+        return index;
+    }
 
 
 }
