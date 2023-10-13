@@ -53,11 +53,11 @@ public class Tester
         }
 
         Board placeBoard = new Board(numRow, numCol); //med tp create a random ship set class
-        Board guessboard = new Board(numRow,numCol);
+        Board guessBoard = new Board(numRow,numCol);
         int maxGuesses = 20;
-        String guess;
+        String trythis;
         int len = shipSet.length;
-        
+
         if (!randomized)
         {
             for (int i = 0; i < len; i++)
@@ -70,11 +70,14 @@ public class Tester
             System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n"); //clear the screen to reduce cheating
             Shooty guesser = new Shooty(placeBoard, guessBoard, maxGuesses);
 
-            do
-            {
+            System.out.print("Enter a guess:");
+            trythis = inputSource.nextLine();
 
+            while (!guesser.guessThat(trythis))
+            {
+                System.out.print("Enter a guess:");
+                trythis = inputSource.nextLine();
             }
-            while (!guesser.guess(0))
 
         }
 

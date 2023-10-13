@@ -12,7 +12,7 @@ public class Shooty {
         maxTries = tries;
     }
 
-    public boolean guess (String locs) //return true when guesses over;
+    public boolean guessThat (String locs) //return true when guesses over;
     {
         if (tryNum > maxTries)
             return true; 
