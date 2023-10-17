@@ -66,10 +66,11 @@ public class Tester
                     //i give up lets just pass scanner in. also apparently ur not supposed to have multiple scanners or else they'll eat everything. WHOOPS
             }
             System.out.print("Number of guesses:");
-            maxGuesses = inputSource.nextInt();
+            maxGuesses = inputSource.nextInt();           
             System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n"); //clear the screen to reduce cheating
             Shooty guesser = new Shooty(placeBoard, guessBoard, maxGuesses); //WHY WONT U COOPERATE >:(
 
+            trythis = inputSource.nextLine();
             System.out.print("Enter a guess:");
             trythis = inputSource.nextLine();
 

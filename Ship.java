@@ -58,7 +58,11 @@ public class Ship
         int len = arr.length;
 
         int  index = 0;
-        
+        if (len < 1)
+        {
+            System.out.println("Please enter an actual guess");
+            return -4;
+        }
 
         if (!Character.isLetter(arr[0]))
         {
