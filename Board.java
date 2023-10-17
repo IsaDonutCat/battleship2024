@@ -15,7 +15,7 @@ public class Board
         for (int i = 0; i < numRow; i++)
         {
             for (int j = 0; j < numCol; j++)
-                grid[i][j] = '~'; //nulls stuff out
+                grid[i][j] = 'O'; //nulls stuff out
         }
 
         printBoard();
@@ -176,7 +176,7 @@ public class Board
                 {
                     for (int j = startR; j < finR; j++)
                     {
-                        grid[j][i] = '~';
+                        grid[j][i] = 'O';
                     }
                 }
             }//clears the board if they don't like it
