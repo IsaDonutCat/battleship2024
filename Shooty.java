@@ -29,7 +29,7 @@ public class Shooty {
             int index = justforcheck.inCoords(locs);
             int row = (int) locs.charAt(0) - 65;
             int col = Integer.parseInt(locs.substring(index));
-            if (answers.grid[row][col] != 'O')
+            if (answers.grid[row][col] != '~')
             {
                 guesses.grid[row][col] = '!';
             } //need to implement checker for sunk
