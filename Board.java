@@ -210,4 +210,23 @@ public class Board
         return;
     }
 
+
+    public void guessWinner (Board answers)
+    {
+        for (int zzz = 0; zzz < numRow; zzz++)
+        {
+            for (int xxx = 0; xxx < numCol; xxx++)
+            {
+                if (answers.grid[zzz][xxx] != 'O' && this.grid[zzz][xxx] != 'X')
+                {
+                    System.out.println("Player 1 wins");
+                    return;
+                }
+            }
+
+            
+        }
+        System.out.println("Player 2 wins");
+            return;
+    }
 }//closes class
