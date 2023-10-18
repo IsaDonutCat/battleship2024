@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.lang.Math;
 
 public class Board
 {
@@ -118,7 +119,7 @@ public class Board
 
             //this part is the "do" of the positioning "do-while" loop
 
-                while (!boat.placeShip(grid, numRow, numCol, startC, finC, startR, finR))
+                while (!boat.placeShip(grid, numRow, numCol, startC, finC, startR, finR, true))
                 { 
                     System.out.print("Please enter in the coordinates of the top left corner of the ship (A1, B1, etc.):");
                     locs = inputSource.nextLine();
@@ -210,6 +211,57 @@ public class Board
         return;
     }
 
+
+    public void ranPiece(Ship boat)
+    {   
+        int orientated, ranCol, ranRow, ranRig, ranBot;
+        do
+        {
+         orientated = (int) Math.random() * 2;
+         ranCol = (int) Math.random() * numCol;
+         ranRow = (int) Math.random() * numRow;
+
+         if (orientated == 0)
+            {
+                ranRig = ranRow + boat.getSize();
+                ranBot = ranCol + 1; //the index one greater than where the ship should be, also so it runs at least once
+            }
+            else
+            {
+                ranRig = ranRow + 1;
+                ranBot = ranCol + boat.getSize();
+            }
+            
+        }
+        while (!boat.placeShip(grid, numRow, numCol, ranCol, ranBot, ranRow, ranRig, false));
+
+        for (int x = ranCol; x < ranBot; x++)
+        {
+            for (int y = ranRow; y < ranRig; y++)
+            {   
+                if (x == ranCol && y == ranRow)
+                {
+                    if (orientated == 0)
+                        grid[y][x] = '^';
+                    else
+                        grid[y][x] = '<';
+                }
+                else if (x == ranBot - 1 && y == ranRig - 1)
+                {
+                    if (orientated == 0)
+                        grid[y][x] = 'v';
+                    else
+                        grid[y][x] = '>';
+                }
+                else
+                {
+                    grid[y][x] = '*';
+                }
+            }
+        }
+
+        return;
+    }
 
     public void guessWinner (Board answers)
     {

@@ -15,8 +15,11 @@ public class Shooty {
     public boolean guessThat (String locs) //return true when guesses over;
     {
         if (tryNum > maxTries)
+        {
+            guesses.guessWinner(answers);
             return true; 
-        if (tryNum == maxTries)
+        }
+            if (tryNum == maxTries)
             System.out.println("Final guess!");
 
         if (justforcheck.inCoords(locs) < 0 )
@@ -63,12 +66,12 @@ public class Shooty {
         if (disOrient == 0)
         {
             cursor = rrrow;
-            while (cursor >= 0 && answers.grid[cursor][cccol] != 'O')
+            while (cursor > 0 && answers.grid[cursor][cccol] != 'O')
             {
                 cursor--; 
             }
 
-            upLe = cursor+1; //adjust for the fact
+            upLe = cursor; //adjust for the fact
             int temp = answers.grid[0].length;
 
             while (cursor < temp && answers.grid[cursor][cccol] != 'O')

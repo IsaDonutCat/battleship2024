@@ -20,7 +20,7 @@ public class Ship
         return name;
     }
 
-    public boolean placeShip (char[][] board, int rowNumb, int colNumb, int fircol, int fincol, int firrow, int finrow) //this many just to avoid the need for more variables later.
+    public boolean placeShip (char[][] board, int rowNumb, int colNumb, int fircol, int fincol, int firrow, int finrow, boolean printError) //this many just to avoid the need for more variables later.
     {
         gridRows = rowNumb;
         gridCols = colNumb;
@@ -32,7 +32,8 @@ public class Ship
 
         if (rowFin > gridRows || colFin > gridCols
         || firrow < 0 || fircol < 0)
-        {
+        {   
+            if (printError)
             System.out.println("The ship would be hanging off the board.");
             return false;
         }
@@ -43,6 +44,7 @@ public class Ship
             {
                 if (board[j][i] != 'O')
                 {
+                if (printError)
                     System.out.println("Another ship is occupying this space!");
                     return false;
                 }
@@ -59,7 +61,7 @@ public class Ship
 
         int  index = 0;
         if (len < 1)
-        {
+        {   
             System.out.println("Please enter an actual guess");
             return -4;
         }
@@ -93,6 +95,4 @@ public class Ship
         }
         return index;
     }
-
-
 }

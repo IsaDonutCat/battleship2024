@@ -79,8 +79,24 @@ public class Tester
                 System.out.print("Enter a guess:");
                 trythis = inputSource.nextLine();
             }
+        }
+        else
+        {
+            Ship[] skrunk = Arrays.copyOfRange(shipSet, 0, 3);
+            for (Ship x : skrunk)
+                placeBoard.ranPiece(x);
+            Shooty shortguesser = new Shooty(placeBoard, guessBoard, 20); //WHY WONT U COOPERATE >:(
 
-            
+            trythis = inputSource.nextLine();
+            System.out.print("Enter a guess:");
+            trythis = inputSource.nextLine();
+
+            while (!shortguesser.guessThat(trythis))
+            {
+                System.out.print("Enter a guess:");
+                trythis = inputSource.nextLine();
+            }
+
         }
 
         inputSource.close(); // at the very end
