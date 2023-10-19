@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.lang.Math;
 
 public class Board
 {
@@ -217,6 +216,10 @@ public class Board
     }
 
 
+    
+    /** 
+     * @param boat
+     */
     public void ranPiece(Ship boat)
     {   
         int orientated, ranCol, ranRow, ranRig, ranBot;

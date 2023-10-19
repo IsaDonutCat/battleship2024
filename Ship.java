@@ -19,7 +19,12 @@ public class Ship
         return size;
     }
 
-    public String getName()  //getters . just to be fancy
+    
+    /** 
+     * @return String
+     */
+    
+     public String getName()  //getters . just to be fancy
     {
         return name;
     }

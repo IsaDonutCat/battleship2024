@@ -63,6 +63,12 @@ public class Shooty {
         }
     }
 
+    
+    /** 
+     * @param rrrow
+     * @param cccol
+     * @return boolean
+     */
     public boolean sunkShip (int rrrow, int cccol)
     {
         int disOrient = orienter(rrrow, cccol);
