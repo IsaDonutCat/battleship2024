@@ -165,7 +165,7 @@ public class Board
                 }
                 
             } //to let player see what their placement looks like
-            printBoard();
+                        printBoard();
 
             
             System.out.print("Satisfied with the placement of your " + boat.getName() + "? (Y/N)");
