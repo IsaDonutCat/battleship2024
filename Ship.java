@@ -10,6 +10,10 @@ public class Ship
         size = shipSize;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getSize() // getters. useful
     {
         return size;

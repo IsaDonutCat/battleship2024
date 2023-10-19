@@ -67,6 +67,11 @@ public class Board
         return;
     }//closes printboard
 
+    
+    /** 
+     * @param boat
+     * @param inputSource
+     */
     public void placePiece(Ship boat, Scanner inputSource)
     {
         String ans = "";

@@ -12,6 +12,11 @@ public class Shooty {
         maxTries = tries;
     }
 
+    
+    /** 
+     * @param locs
+     * @return boolean
+     */
     public boolean guessThat (String locs) //return true when guesses over;
     {
         if (tryNum > maxTries)

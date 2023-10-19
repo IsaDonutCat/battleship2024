@@ -5,6 +5,10 @@ public class Tester
 {
     private static Scanner inputSource = new Scanner(System.in);
 
+    
+    /** 
+     * @param args
+     */
     public static void main (String[] args)
     {
         int numRow, numCol;
